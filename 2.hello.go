@@ -3,10 +3,23 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
+
+var p1 = fmt.Println
 
 func main() {
-	// fmt.Println("Hello, World!")
-	var something = "Hello, World!"
-	fmt.Println(something)
+	p1("what is ur name")
+	reader := bufio.NewReader(os.Stdin)
+	name, err := reader.ReadString('\n')
+
+	if err == nil {
+		p1("Hello", name)
+	} else {
+		log.Fatal(err)
+	}
 }
